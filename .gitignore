@@ -1,0 +1,10 @@
+results/
+node_modules/
+TODO.txt
+error.log
+.DS_Store
+snapshots/
+coins/
+dump.rdb
+yarn-error.log
+finalResults/
