@@ -10,7 +10,7 @@ import Crawler, {
   HttpLinkExpander,
   RobotsTxtAdvisor,
   JSONStreamReporter,
-  ZeroMqReporter,
+  // ZeroMqReporter,
   // RedisURLQueue
 } from 'plugnsearch'
 import {
@@ -23,7 +23,7 @@ const logger = winston.createLogger({
   level: process.env.LOG_LEVEL || 'error',
   format: winston.format.json(),
   transports: [
-    new winston.transports.File({ filename: 'error.log', level: 'error' })
+    new winston.transports.File({ filename: '/logs/error.log', level: 'error' })
   ]
 })
 
@@ -42,8 +42,8 @@ export default (App, seedUrls, config, cb) => {
   const filename = config.reportFilename
     ? `${config.reportFilename}_${Date.now()}_result.json`
     : `${Date.now()}_result.json`
-  // const reporter = new JSONStreamReporter({ filename: path.join(__dirname, '../results', filename) })
-  const reporter = new ZeroMqReporter({ channel: 'zzz' })
+  const reporter = new JSONStreamReporter({ filename: path.join('/results', filename) })
+  // const reporter = new ZeroMqReporter({ channel: 'zzz' })
 
   const crawler = new Crawler({
     benchmark: true,
